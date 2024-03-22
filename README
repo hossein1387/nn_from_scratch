@@ -1,0 +1,8 @@
+nn from scratch is a simple ml framework that implements all neural network ops using only numpy, albeit, it wont be the most efficient framework out there.
+
+
+# TODO:
+
+- conv2d
+- linear
+- batchnorm
