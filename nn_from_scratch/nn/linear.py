@@ -1,12 +1,12 @@
 import numpy as np
 
 class Linear:
-    def __init__(self, shape, weights=[], tiled=False, tile_sz = 4):
+    def __init__(self, shape, weights=[], tile_sz = -1):
         if np.any(weights):
             self.weights = weights
         else:
             self.weights = np.random.rand(*shape)
-        self.tiled = tiled
+        self.tiled = True if tile_sz!= -1 else False
         self.tile_sz = tile_sz
 
     def matmul_tiled(self, in1, y1, x1, in2, y2, x2):
