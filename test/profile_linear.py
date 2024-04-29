@@ -47,7 +47,6 @@ class TestLinearOutput(unittest.TestCase):
             print("PASS")
         except AssertionError as e:
             print(e)
-    
 
 if __name__ == '__main__':
   unittest.main()

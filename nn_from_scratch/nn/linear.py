@@ -5,7 +5,10 @@ class Linear:
         if np.any(weights):
             self.weights = weights
         else:
-            self.weights = np.random.rand(*shape)
+            if isinstance(shape, int):
+                self.weights = np.random.rand(shape, shape)
+            else:
+                self.weights = np.random.rand(*shape)
         self.tiled = True if tile_sz!= -1 else False
         self.tile_sz = tile_sz
 
