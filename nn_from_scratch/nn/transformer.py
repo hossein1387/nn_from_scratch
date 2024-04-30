@@ -15,11 +15,12 @@ class MultiHeadAttention:
         self.v = Linear([d_model, d_model])
         self.o = Linear([d_model, d_model])
 
-    def scaled_dot_product_attention(self, q, k, v):
-        attn_scores = q@k.transpose()/np.sqrt(self.d_k)
-        attn_probs = softmax(attn_scores)
-        output = attn_probs@v
-        return output
+    def scaled_dot_product_attention_mine(self, q, k, v):
+            scale_factor = 1/np.sqrt(q.shape[-1])
+            attn_scores = q@k.transpose(-2, -1) * scale_factor
+            attn_probs = softmax(attn_scores, axis=-1)
+            output = attn_probs@v
+            return output
 
     def split_heads(self, x):
         batch_size, seq_length, d_model = x.shape()

@@ -9,6 +9,6 @@ class Function:
 
 class softmax(Function):
     def forward(self, x, axis=-1):
-       t1 = x - np.max(x)
-       t2 = np.exp(t1)
-       return (t2)/(np.sum(t2))
+        t1 = x - np.max(x, axis=axis, keepdims=True)
+        t2 = np.exp(t1)
+        return (t2)/(np.sum(t2, axis=axis, keepdims=True))
